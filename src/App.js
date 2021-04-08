@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+//components 
+import PostList from './components/post.list';
+
+//mock data to extract
+import posts from './data/posts.json';
+import users from './data/users.json';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+    <header className="App-Header">
+    <h1>Blog Demo</h1>
+    </header>
+    <PostList posts={posts} />
+    <PostList posts={posts} users={users}/>
+    </>
   );
-}
+};
 
 export default App;
