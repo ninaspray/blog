@@ -1,23 +1,22 @@
+
 import React from 'react';
 
-//components 
+// components
 import PostList from './components/post.list';
 
-//mock data to extract
+// mock data
 import posts from './data/posts.json';
 import users from './data/users.json';
 
 const App = () => {
-  return (
-    <>
-
-    <header className="App-Header">
-    <h1>Blog Demo</h1>
-    </header>
-    <PostList posts={posts} />
-    <PostList posts={posts} users={users}/>
-    </>
-  );
+    return (
+        <>
+            <header className="App-header">
+                <h1>Blog Demo</h1>
+            </header>
+            <PostList posts={posts} users={users} />
+        </>
+    );
 };
 
 export default App;
