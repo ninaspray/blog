@@ -1,5 +1,11 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
+
+//types 
+import { PostType } from '../types/post.type';
+import { UserType } from '../types/user.type';
+
 
 // components
 import PostEntry from './post.entry';
@@ -9,6 +15,11 @@ const PostList = ({ posts, users }) => {
         const user = users.find(({ id }) => id === post.userId);
         return <PostEntry key={post.id} post={post} user={user} />;
     });
+};
+
+PostList.propTypes = {
+    posts: PropTypes.arrayOf(PostType).isRequired,
+    users: PropTypes.arrayOf(UserType).isRequired,
 };
 
 export default PostList;
