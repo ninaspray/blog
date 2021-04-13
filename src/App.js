@@ -9,6 +9,7 @@ const App = () => {
     const [theme, setTheme] = useState('light');
     const [posts, setPosts] = useState([]);
     const [users, setUsers] = useState([]);
+    const [error, setError] = useState(undefined);
 
 
     const themeConfig = {
@@ -27,7 +28,8 @@ const App = () => {
           if (response.data && response.status === 200) {
               setPosts(response.data);
           }
-      });
+      })
+      .catch(()=> setError('There was an error fetching posts'));
 
       axios
       .get('https://jsonplaceholder.typicode.com/users')
@@ -35,7 +37,8 @@ const App = () => {
           if (response.data && response.dtatus === 200) {
             setUsers(response.data);
           }
-      });
+    }) 
+    .catch(() => setError('There was an error fetching users'));
     }, []);
 
     return (
@@ -56,6 +59,7 @@ const App = () => {
             ) : (
              <div>Loading...</div>   
             )}
+            {error && <div>{error}</div>}
         </div>
     );
 };
