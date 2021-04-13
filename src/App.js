@@ -1,12 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // components
 import PostList from './components/post.list';
-
-// mock data
-import mockPosts from './data/posts.json';
-import mockUsers from './data/users.json';
 
 const App = () => {
     const [theme, setTheme] = useState('light');
@@ -24,8 +21,21 @@ const App = () => {
     };
 
     useEffect(() => {
-        setPosts(mockPosts);
-        setUsers(mockUsers);
+      axios
+      .get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+          if (response.data && response.status === 200) {
+              setPosts(response.data);
+          }
+      });
+
+      axios
+      .get('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+          if (response.data && response.dtatus === 200) {
+            setUsers(response.data);
+          }
+      });
     }, []);
 
     return (
