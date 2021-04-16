@@ -40,19 +40,29 @@ describe('LikeCounter', () => {
         expect(screen.getAllByRole("button")).toHaveLength(1);
         expect(screen.getByText("+")).toBeInTheDocument();
       });
-
-    it('calls updateCounter prop when clicked', () => {
-      const likeCount = 0;
-  
-      render(
-        <LikeCounter
-            likeCounter={likeCount}
-            handleDecreaseLike={decreaseLike}
+      it('does not displays "-" button when likes count is 0', () => {
+        const likesCount = 0;
+       const {queryByTestId} = render(
+          <LikeCounter
+            likeCounter={likesCount}
             handleIncreaseLike={increaseLike}
-        />
-      );
-      fireEvent.click(screen.getByText("+"));
-      expect(increaseLike).toHaveBeenCalledTimes(1);
+            handleDecreaseLike={decreaseLike}
+          />
+        );
+        expect(screen.queryByTestId("decreaseButton")).not.toBeInTheDocument();
+      });
+    
+      it('calls updateCounter prop when clicked', () => {
+        const likesCount = 0;
+    
+        render(
+          <LikeCounter
+            likeCounter={likesCount}
+            handleIncreaseLike={increaseLike}
+            handleDecreaseLike={decreaseLike}
+          />
+        );
+        fireEvent.click(screen.getByText("+"));
+        expect(increaseLike).toHaveBeenCalledTimes(1);
+      });
     });
-  
-  });
