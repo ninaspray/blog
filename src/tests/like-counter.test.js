@@ -15,6 +15,32 @@ describe('LikeCounter', () => {
       expect(screen.getByText(count)).toBeInTheDocument();
     });
 
+
+    it('displays "-" button when likes count is higher than 0', () => {
+        const likesCount = 1;
+        render(
+          <LikeCounter
+            likeCounter={likesCount}
+            handleIncreaseLike={increaseLike}
+            handleDecreaseLike={decreaseLike}
+          />
+        );
+        expect(screen.getByText("-")).toBeInTheDocument();
+      });
+    
+      it('displays only "+" button when likes count is 0', () => {
+        const likesCount = 0;
+        render(
+          <LikeCounter
+            likeCounter={likesCount}
+            handleIncreaseLike={increaseLike}
+            handleDecreaseLike={decreaseLike}
+          />
+        );
+        expect(screen.getAllByRole("button")).toHaveLength(1);
+        expect(screen.getByText("+")).toBeInTheDocument();
+      });
+
     it('calls updateCounter prop when clicked', () => {
       const likeCount = 0;
   
