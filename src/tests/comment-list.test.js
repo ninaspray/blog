@@ -24,6 +24,13 @@ const comments = [
     ];
 
 describe("comment list", () => {
+    it("renders as expected", () => {
+        const { asFragment } = render(
+          <CommentList comments={comments} />
+        );
+        const component = asFragment();
+        expect(component).toMatchSnapshot();
+      });
     it("render expected number of comments", () => {
     const { getAllByTestId } = render(
     <CommentList comments={comments} />
