@@ -19,9 +19,13 @@ const PostEntry = ({ post, user, children }) => {
   const [likeCounter, setLikeCounter] = useState(0);
   const [comment, setComments] = useState([]);
 
-  const updateCounter = () => {
+  const increseLike = () => {
       setLikeCounter(previousCounter => previousCounter + 1 );
   };
+
+  const decreaseLike = () => {
+    setLikeCounter(previousCounter => previousCounter - 1 );
+};
 
 const addComment = comment => {
     setComments(prev => [...prev, { uuid: v4(), ...comment }]);
@@ -43,7 +47,8 @@ useEffect(() => {
     <div>
    <LikeCounter 
    likeCounter ={likeCounter}
-   handleClick={updateCounter}
+   handleDecreaseLike={decreaseLike}
+   handleIncreaseLike={increseLike}
    />
 {children}
 </div>

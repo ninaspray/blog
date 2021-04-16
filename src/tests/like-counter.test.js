@@ -4,20 +4,29 @@ import '@testing-library/jest-dom'
 import LikeCounter from "../components/like-counter";
 
 describe('LikeCounter', () => {
-    const updateCounter = jest.fn();
+    
+    const increaseLike = jest.fn();
+    const decreaseLike = jest.fn();
     const counts = [0, 1, 2, 10];
     it.each(counts)('display %s likes when expected', (count) => {
-      render(<LikeCounter likeCounter={count} handleClick={updateCounter} />);
+      render(<LikeCounter likeCounter={count}
+         handleDecreaseLike={decreaseLike}
+         handleIncreaseLike={increaseLike} />);
       expect(screen.getByText(count)).toBeInTheDocument();
     });
 
     it('calls updateCounter prop when clicked', () => {
-      const updateCounter = jest.fn();
-      const likeCounter = 0;
+      const likeCount = 0;
   
-      render(<LikeCounter likeCounter={likeCounter} handleClick={updateCounter} />);
+      render(
+        <LikeCounter
+            likeCounter={likeCount}
+            handleDecreaseLike={decreaseLike}
+            handleIncreaseLike={increaseLike}
+        />
+      );
       fireEvent.click(screen.getByText("+"));
-      expect(updateCounter).toHaveBeenCalledTimes(1);
+      expect(increaseLike).toHaveBeenCalledTimes(1);
     });
   
   });
