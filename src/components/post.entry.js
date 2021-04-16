@@ -10,6 +10,7 @@ import { UserType } from '../types/user.type';
 //components
 import CommentInput from './comment-input';
 import CommentList from './comment-list';
+import LikeCounter from './like-counter';
 
 const PostEntry = ({ post, user, children }) => {
   const { title, body } = post;
@@ -40,10 +41,10 @@ useEffect(() => {
     <h3>by {name}</h3>
     <p>{body}</p>
     <div>
-    <span>{likeCounter}</span>
-<button type="button" onClick={() => updateCounter()}>
-+
-</button>
+   <LikeCounter 
+   likeCounter ={likeCounter}
+   handleClick={updateCounter}
+   />
 {children}
 </div>
 <CommentInput addComment={addComment}/>
