@@ -7,6 +7,9 @@ exports[`Header shows theme buttons 1`] = `
   <h1>
     Blog Demo
   </h1>
+  <h2>
+    Introduction to React using a public repo on GitHub
+  </h2>
   <div>
     <button
       type="button"

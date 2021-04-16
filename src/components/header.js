@@ -9,6 +9,7 @@ const Header = () => {
     return (
         <header className="App-header">
             <h1>Blog Demo</h1>
+            <h2>Introduction to React using a public repo on GitHub</h2>
             <div>
                 <button type="button" onClick={() => setTheme('light')}>
                     light
