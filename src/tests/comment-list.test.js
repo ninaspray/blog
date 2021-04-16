@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, screen} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import '../components/comment-list';
 import CommentList from '../components/comment-list';

@@ -15,7 +15,7 @@ const LikeCounter = ({ likeCounter, handleClick }) => {
 export default LikeCounter;
 
 // eslint-disable-next-line react/no-typos
-LikeCounter.PropTypes = {
+LikeCounter.propTypes = {
     likeCounter: PropTypes.number.isRequired,
     handleClick: PropTypes.func.isRequired,
 }
