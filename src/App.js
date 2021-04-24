@@ -28,16 +28,6 @@ const App = () => {
         setPosts(prev => prev.filter(post => post.id !== id));
     };
 
-    const addPost = ({ title, body }) => {
-        setPosts(prev => {
-            const postId = Math.max(...prev.map(({ id }) => id)) + 1;
-            return [
-                { userId: prev[0].userId, id: postId, title, body },
-                ...prev,
-            ];
-        });
-    };
-
     useEffect(() => {
         if (posts.length > 0) {
             document.title = `My blog has ${posts.length} entries`;
