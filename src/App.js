@@ -11,6 +11,7 @@ import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
 import { useFetch } from './hooks/useFetch';
 import About from './components/About';
 import Contact from './components/Contact';
+import Creat from './components/Create';
 
 // consts
 const API = 'https://jsonplaceholder.typicode.com';
@@ -25,6 +26,16 @@ const App = () => {
 
     const removePost = id => {
         setPosts(prev => prev.filter(post => post.id !== id));
+    };
+
+    const addPost = ({ title, body }) => {
+        setPosts(prev => {
+            const postId = Math.max(...prev.map(({ id }) => id)) + 1;
+            return [
+                { userId: prev[0].userId, id: postId, title, body },
+                ...prev,
+            ];
+        });
     };
 
     useEffect(() => {
@@ -51,6 +62,9 @@ const App = () => {
                             <div>Loading...</div>
                         )}
                     </div>
+                </Route>
+                <Route path="/create">
+                    <Create addPost={addPost} />
                 </Route>
                 <Route path="/about" component={About}/>
                 <Route path="/contact" component={Contact}/>
