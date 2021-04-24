@@ -30,7 +30,7 @@ describe("comment list", () => {
         );
         const component = asFragment();
         expect(component).toMatchSnapshot();
-      });
+    });
     it("render expected number of comments", () => {
     const { getAllByTestId } = render(
     <CommentList comments={comments} />
