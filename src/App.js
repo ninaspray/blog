@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
 import { useFetch } from './hooks/useFetch';
+import About from './components/ABout';
 
 // consts
 const API = 'https://jsonplaceholder.typicode.com';
@@ -49,9 +50,7 @@ const App = () => {
                         )}
                     </div>
                 </Route>
-                <Route path="/about">
-                    <h1>About</h1>
-                </Route>
+                <Route path="/about" component={About}/>
             </Router>
         </ThemeContext.Provider>
     );
