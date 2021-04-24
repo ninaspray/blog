@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 // components
 import PostList from './components/post.list';
 import Header from './components/header';
+import Navigation from './components/Navigation';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
@@ -16,7 +17,6 @@ const App = () => {
     const [theme, setTheme] = useState('light');
     const [posts, setPosts] = useState([]);
     const [users, setUsers] = useState([]);
-    const [error, setError] = useState(undefined);
     const [posts, setPosts] = useFetch(`${API}/posts`);
     const [users] = useFetch(`${API}/users`);
 
@@ -34,14 +34,7 @@ const App = () => {
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>
             <Router>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                            <Link to="/about">About</Link>
-                        </li>
-                    </ul>
-                </nav>
+                <Navigation />
                 <Route exact path="/">
                     <div style={ThemeConfig[theme]}>
                         <Header />
