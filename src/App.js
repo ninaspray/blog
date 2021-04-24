@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 // components
 import PostList from './components/post.list';
@@ -37,6 +37,7 @@ const App = () => {
         <ThemeContext.Provider value={{ theme, setTheme }}>
             <Router>
                 <Navigation />
+                <Switch>
                 <Route exact path="/">
                     <div style={ThemeConfig[theme]}>
                         <Header />
@@ -53,6 +54,7 @@ const App = () => {
                 </Route>
                 <Route path="/about" component={About}/>
                 <Route path="/contact" component={Contact}/>
+                </Switch>
             </Router>
         </ThemeContext.Provider>
     );
