@@ -12,7 +12,7 @@ import CommentInput from './comment-input';
 import CommentList from './comment-list';
 import LikeCounter from './like-counter';
 
-const PostEntry = ({ post, user, children }) => {
+const PostEntrySummary = ({ post, user, children }) => {
   const { title, body } = post;
   const { name } = user;
 
@@ -58,10 +58,10 @@ useEffect(() => {
     );
   };
 
-    PostEntry.propTypes = {
+    PostEntrySummary.propTypes = {
         post: PostType.isRequired,
         user: UserType.isRequired,
         children: PropTypes.node.isRequired,
     };
     
-    export default PostEntry;
+    export default PostEntrySummary;

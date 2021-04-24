@@ -11,22 +11,15 @@ import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
 import { useFetch } from './hooks/useFetch';
 import About from './components/About';
 import Contact from './components/Contact';
-import Creat from './components/Create';
+import Create from './components/Create';
 
 // consts
 const API = 'https://jsonplaceholder.typicode.com';
 
 const App = () => {
     const [theme, setTheme] = useState('light');
-    const [posts, setPosts] = useState([]);
-    const [users, setUsers] = useState([]);
-    const [posts, setPosts] = useFetch(`${API}/posts`);
+    const [posts, addPost, removePost] = useFetch(`${API}/posts`);
     const [users] = useFetch(`${API}/users`);
-
-
-    const removePost = id => {
-        setPosts(prev => prev.filter(post => post.id !== id));
-    };
 
     useEffect(() => {
         if (posts.length > 0) {
@@ -42,14 +35,14 @@ const App = () => {
                 <Route exact path="/">
                     <div style={ThemeConfig[theme]}>
                         <Header />
-                        {posts.length > 0 && users.length > 0 ? (
-                            <PostList
-                                posts={posts}
-                                users={users}
-                                removePost={removePost}
-                            />
-                        ) : (
-                            <div>Loading...</div>
+                        {posts?.length > 0 && users?.length > 0 ? (
+                                <PostList
+                                    posts={posts}
+                                    users={users}
+                                    removePost={removePost}
+                                />
+                            ) : (
+                                <div>Loading...</div>
                         )}
                     </div>
                 </Route>

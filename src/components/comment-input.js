@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 // custom hook
-import { useForm } from '../hooks/useFrorm';
+import { useForm } from '../hooks/useForm';
 
 // contexts
 import { ThemeConfig, ThemeContext } from '../contexts/ThemeContext';

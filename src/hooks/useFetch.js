@@ -18,7 +18,13 @@ export const useFetch = url => {
                 });
             });
     };
-    
+
+    const removeData = id => {
+        fetch(`${url}/${id}`, {
+            method: 'DELETE',
+        }).then(() => setState(prev => prev.filter(d => d.id !== id)));
+    };
+
     useEffect(() => {
         fetch(url)
             .then(result => result.json())
@@ -26,4 +32,5 @@ export const useFetch = url => {
     }, [url, setState]);
 
     return [data, setState, addData];
+    return [data, addData, removeData];
 };
