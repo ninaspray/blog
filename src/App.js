@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PostList from './components/post.list';
 import Header from './components/header';
 import Navigation from './components/Navigation';
-import PostEntrySummary from './components/post.entry';
+import PostEntrySummary from './components/PostEntrySummary';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';

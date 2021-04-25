@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { link } from 'react-router-dom';
 
 
 //types
@@ -23,17 +24,11 @@ const PostEntrySummary = ({ post, user, children }) => {
     setLikeCounter(previousCounter => previousCounter - 1 );
 };
 
-useEffect(() => {
-  return () => {
-      console.log(
-          `component PostEntry for post ${post.id}, has been unmounted`,
-      );
-  };
-}, [post.id]);
-
   return (
    <article>
-    <h2>{title}</h2>
+    <h2>
+      <Link to={`post/${post.id}`}>{title}</Link>
+    </h2>
     <h3>by {name}</h3>
     <p>{body}</p>
     <div>
