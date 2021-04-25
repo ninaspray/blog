@@ -4,4 +4,5 @@ export const CommentType = PropTypes.shape({
     uuid: PropTypes.string,
     username: PropTypes.string,
     body: PropTypes.string,
+    identityConsent: PropTypes.bool,
 });

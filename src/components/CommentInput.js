@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 // custom hook
@@ -10,8 +10,10 @@ import { ThemeConfig, ThemeContext } from '../contexts/ThemeContext';
 const CommentInput = ({ addComment, postId }) => {
     const [input, setInput, resetInput] = useForm({
         name: '',
+        email: '',
         body: '',
         postId,
+        indentityConsent: false, 
     });
     const { theme } = useContext(ThemeContext);
 
@@ -20,16 +22,6 @@ const CommentInput = ({ addComment, postId }) => {
         addComment({ ...input });
         resetInput(event);
     };
-
-    const [checkbox, setCheckbox] = useState(false);
-
-    const handleCheckbox = () => {
-        setCheckbox(!checkbox);
-    };
-
-    useEffect(() => {
-        console.log(checkbox);
-    }, [checkbox]);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -41,6 +33,16 @@ const CommentInput = ({ addComment, postId }) => {
                     value={input.name}
                     onChange={setInput}
                     placeholder="username"
+                />
+            </div>
+            <div>
+                <input
+                    style={ThemeConfig[theme]}
+                    type="text"
+                    name="email"
+                    value={input.email}
+                    onChange={setInput}
+                    placeholder="email"
                 />
             </div>
             <div>
@@ -58,7 +60,7 @@ const CommentInput = ({ addComment, postId }) => {
                         type="checkbox"
                         name="identityConsent"
                         id="identityConsent"
-                        onChange={() => handleCheckbox()}
+                        onChange={setInput}
                     />
                     Show my name and email
                 </label>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { CommentType } from '../types/comment.type';
 
 const Comment = ({ comment }) => {
@@ -14,8 +15,21 @@ const Comment = ({ comment }) => {
     };
     const handleReveal = () => setIsEmailVisible(true);
     const handleHide = () => setIsEmailVisible(false)
+
+
+    // Display details if:
+    // - identity consent was not supported when user posted,
+    // - identity consent was supported and user consented
+    //   to publish their details.
+    // - Adding functionality of the  
+    const displayDetails =
+        !('identityConsent' in comment) || comment.identityConsent;
+
+
+
+
     return (
-        <li key={comment.id} data-testid="comment">
+        <li data-testid="comment">
              <div>
                 <strong
                     onMouseOver={() => handleReveal()}
@@ -23,9 +37,9 @@ const Comment = ({ comment }) => {
                     onMouseOut={() => handleHide()}
                     onBlur={() => handleHide()}
                 >
-                    {comment.name}:{' '}
+                    {displayDetails ? comment.name : 'Anonymous author'}:{' '}
                 </strong>
-                {isEmailVisible && <div>{comment.email}</div>}
+                {displayDetails && isEmailVisible && <div>{comment.email}</div>}
             </div>
             <p>{comment.body}</p>
             {voteCounter}
@@ -47,6 +61,8 @@ const Comment = ({ comment }) => {
     );
 };
 
-Comment.propTypes = CommentType;
+Comment.propTypes = {
+    comment: CommentType.isRequired, 
+};
 
 export default Comment;
