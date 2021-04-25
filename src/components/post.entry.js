@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { v4 } from 'uuid';
 import PropTypes from 'prop-types';
 
 
@@ -8,8 +7,6 @@ import { PostType } from '../types/post.type';
 import { UserType } from '../types/user.type';
 
 //components
-import CommentInput from './comment-input';
-import CommentList from './comment-list';
 import LikeCounter from './like-counter';
 
 const PostEntrySummary = ({ post, user, children }) => {
@@ -17,7 +14,6 @@ const PostEntrySummary = ({ post, user, children }) => {
   const { name } = user;
 
   const [likeCounter, setLikeCounter] = useState(0);
-  const [comment, setComments] = useState([]);
 
   const increseLike = () => {
       setLikeCounter(previousCounter => previousCounter + 1 );
@@ -25,10 +21,6 @@ const PostEntrySummary = ({ post, user, children }) => {
 
   const decreaseLike = () => {
     setLikeCounter(previousCounter => previousCounter - 1 );
-};
-
-const addComment = comment => {
-    setComments(prev => [...prev, { uuid: v4(), ...comment }]);
 };
 
 useEffect(() => {
@@ -52,8 +44,6 @@ useEffect(() => {
    />
 {children}
 </div>
-<CommentInput addComment={addComment}/>
-<CommentList comments={comment}/>
 </article>
     );
   };

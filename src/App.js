@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PostList from './components/post.list';
 import Header from './components/header';
 import Navigation from './components/Navigation';
+import PostEntrySummary from './components/post.entry';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
@@ -14,7 +15,7 @@ import Contact from './components/Contact';
 import Create from './components/Create';
 
 // consts
-const API = 'https://jsonplaceholder.typicode.com';
+const API = process.env.REACT_APP_JSON_PLACEHOLDER_API; 
 
 const App = () => {
     const [theme, setTheme] = useState('light');
@@ -51,6 +52,7 @@ const App = () => {
                 </Route>
                 <Route path="/about" component={About}/>
                 <Route path="/contact" component={Contact}/>
+                <Route path="/post/id" component={PostEntrySummary}/>
                 </Switch>
             </Router>
         </ThemeContext.Provider>
