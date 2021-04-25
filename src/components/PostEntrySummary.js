@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 //types

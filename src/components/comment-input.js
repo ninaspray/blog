@@ -7,13 +7,17 @@ import { useForm } from '../hooks/useForm';
 // contexts
 import { ThemeConfig, ThemeContext } from '../contexts/ThemeContext';
 
-const CommentInput = ({ addComment }) => {
-    const [input, setInput, resetInput] = useForm({ username: '', body: '' });
-    const { theme } = useContext(ThemeContext);
+const CommentInput = ({ addComment, postId }) => {
+    const [input, setInput, resetInput] = useForm({
+        name: '',
+        body: '',
+        postId,
+    });
 
     const handleSubmit = event => {
         event.preventDefault();
-        resetInput();
+        addComment({ ...input });
+        resetInput(event);
     };
 
     return (
@@ -22,8 +26,8 @@ const CommentInput = ({ addComment }) => {
                 <input
                     style={ThemeConfig[theme]}
                     type="text"
-                    name="username"
-                    value={input.username}
+                    name="name"
+                    value={input.name}
                     onChange={setInput}
                     placeholder="username"
                 />
@@ -38,9 +42,7 @@ const CommentInput = ({ addComment }) => {
                 />
             </div>
             <div>
-                <button type="submit" onClick={() => addComment(input)}>
-                    submit
-                </button>
+            <button type="submit">Submit</button>
             </div>
         </form>
     );
@@ -48,6 +50,7 @@ const CommentInput = ({ addComment }) => {
 
 CommentInput.propTypes = {
     addComment: PropTypes.func.isRequired,
+    postId: PropTypes.number.isRequired,
 };
 
 export default CommentInput;

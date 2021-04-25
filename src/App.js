@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 
 // components
 import PostList from './components/post.list';
 import Header from './components/header';
 import Navigation from './components/Navigation';
 import PostEntrySummary from './components/PostEntrySummary';
+import NotFound from './components/NotFound';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
@@ -54,6 +55,10 @@ const App = () => {
                 <Route path="/about" component={About}/>
                 <Route path="/contact" component={Contact}/>
                 <Route path="/post/id" component={PostEntrySummary}/>
+                <Route exact path="/404" component={NotFound} />
+                    <Route>
+                        <Redirect to="/404" />
+                    </Route>
                 </Switch>
             </Router>
         </ThemeContext.Provider>
