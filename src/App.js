@@ -2,22 +2,23 @@ import React, { useEffect, useState } from 'react';
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 
 // components
-import PostList from './components/post.list';
+import PostList from './components/PostList';
 import Header from './components/header';
 import Navigation from './components/Navigation';
+import About from './components/About';
+import Contact from './components/Contact';
+import Create from './components/Create';
 import PostEntrySummary from './components/PostEntrySummary';
 import NotFound from './components/NotFound';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
+
 //Custom Hook
 import { useFetch } from './hooks/useFetch';
-import About from './components/About';
-import Contact from './components/Contact';
-import Create from './components/Create';
 
 // consts
-const API = process.env.REACT_APP_JSON_PLACEHOLDER_API; 
+const API = process.env.REACT_APP_JSON_PLACEHOLDER_API
 
 const App = () => {
     const [theme, setTheme] = useState('light');

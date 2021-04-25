@@ -13,6 +13,7 @@ const CommentInput = ({ addComment, postId }) => {
         body: '',
         postId,
     });
+    const { theme } = useContext(ThemeContext);
 
     const handleSubmit = event => {
         event.preventDefault();

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { CommentType } from '../types/comment.type';
 
 const CommentList = ({ comments }) => {
+    const handleClick = event => console.log(event);
     return (
         <ul>
             {comments.map(comment => (
@@ -11,6 +12,12 @@ const CommentList = ({ comments }) => {
                     <strong>{comment.name}: </strong>
                         {comment.body}
                     </p>
+                    <button type="button" onClick={event => handleClick(event)}>
+                        + upvote
+                    </button>
+                    <button type="button" onClick={event => handleClick(event)}>
+                        - downvote
+                    </button>
                 </li>
             ))}
         </ul>
