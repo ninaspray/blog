@@ -37,7 +37,7 @@ const PostEntrySummary = ({ post, user, children }) => {
    handleDecreaseLike={decreaseLike}
    handleIncreaseLike={increseLike}
    />
-{children}
+{children || ''}
 </div>
 </article>
     );
@@ -46,7 +46,11 @@ const PostEntrySummary = ({ post, user, children }) => {
     PostEntrySummary.propTypes = {
         post: PostType.isRequired,
         user: UserType.isRequired,
-        children: PropTypes.node.isRequired,
+        children: PropTypes.node,
+    };
+
+    PostEntrySummary.defaultProps = {
+      children : undefined,
     };
     
     export default PostEntrySummary;

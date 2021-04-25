@@ -9,6 +9,7 @@ import PostEntrySummary from './components/PostEntrySummary';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
+//Custom Hook
 import { useFetch } from './hooks/useFetch';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -23,8 +24,8 @@ const App = () => {
     const [users] = useFetch(`${API}/users`);
 
     useEffect(() => {
-        if (posts.length > 0) {
-            document.title = `My blog has ${posts.length} entries`;
+        if (posts?.length > 0) {
+            document.title = `My blog has ${posts?.length} entries`;
         }
     }, [posts]);
 
