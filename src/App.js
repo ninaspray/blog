@@ -17,8 +17,10 @@ import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
 //Custom Hook
 import { useFetch } from './hooks/useFetch';
 
-//stlye
-import { PageWrapper, PageContainer } from './styles/GlobalStyles';
+//Styles
+import { PageWrapper,
+    PageContainer,
+    PostListWrapper, } from './styles/GlobalStyles';
 
 // consts
 const API = process.env.REACT_APP_JSON_PLACEHOLDER_API
@@ -35,15 +37,16 @@ const App = () => {
     }, [posts]);
 
     return (
+        <PageWrapper>
         <ThemeContext.Provider value={{ theme, setTheme }}>
-            <PageWrapper>
             <Router>
                 <Navigation />
                 <Switch>
                 <Route exact path="/">
                     <div style={ThemeConfig[theme]}>
-                        <Header />
                         <PageContainer>
+                        <Header />
+                        <PostListWrapper>
                         {posts?.length > 0 && users?.length > 0 ? (
                                 <PostList
                                     posts={posts}
@@ -53,6 +56,7 @@ const App = () => {
                             ) : (
                                 <div>Loading...</div>
                         )}
+                        </PostListWrapper>
                         </PageContainer>
                     </div>
                 </Route>
@@ -68,8 +72,8 @@ const App = () => {
                     </Route>
                 </Switch>
             </Router>
-            </PageWrapper>
         </ThemeContext.Provider>
+        </PageWrapper>
     );
 };
 

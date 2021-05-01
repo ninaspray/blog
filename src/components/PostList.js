@@ -11,20 +11,17 @@ import { UserType } from '../types/user.type';
 import PostEntrySummary from './PostEntrySummary';
 
 
-//styles
-import {PageContainer} from '../styles/GlobalStyles';
-
 const PostList = ({ posts, users, removePost, theme }) => {
     return (posts || []).map(post => {
         const user = users.find(({ id }) => id === post.userId);
         return (
-            <PageContainer key={post.id}>
+            <div className="post-entry" key={post.id}>
                 <PostEntrySummary post={post} user={user} theme={theme}>
                     <button type="button" onClick={() => removePost(post.id)}>
                         remove
                     </button>
                 </PostEntrySummary>
-            </PageContainer>
+            </div>
         );
     });
 };

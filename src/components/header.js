@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 
 //style 
-import { PageContainer,
+import {
 StyledHeader,
 StyleButton,
  } from '../styles/GlobalStyles';
@@ -14,11 +14,10 @@ const Header = () => {
 
     return (
         
-        <PageContainer>
-                <StyledHeader className="App-header">
-            <h1>Blog Demo</h1>
+                <StyledHeader className="Header">
+            <h1 className="header_title">Blog Demo</h1>
             <h2>Introduction to React using a public repo on GitHub</h2>
-            <div>
+            <div className="header_button-wrap">
                 <StyleButton type="button" onClick={() => setTheme('light')}>
                     light
                 </StyleButton>
@@ -27,7 +26,6 @@ const Header = () => {
                 </StyleButton>
             </div>
             </StyledHeader>
-        </PageContainer>
         
     );
 };

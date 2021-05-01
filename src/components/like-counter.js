@@ -1,25 +1,31 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import { StyledButtonSmall, StyledLikeWrapper } from '../styles/GlobalStyles';
 
 const LikeCounter = ({ likeCounter, 
     handleIncreaseLike, 
     handleDecreaseLike }) => {
         return (
-            <>
-                <span>{likeCounter}</span>
-                <button type="button" onClick={() => handleIncreaseLike()}>
+            <StyledLikeWrapper>
+            <span className="like-wrapper__counter">{likeCounter}</span>
+            <StyledButtonSmall
+                className="like-wrapper__button"
+                type="button"
+                onClick={() => handleIncreaseLike()}
+            >
                     +
-                </button>
+                    </StyledButtonSmall>
                 {likeCounter > 0 && (
-                    <button
+                    <StyledButtonSmall
                         type="button"
                         data-testid="decreaseButton"
                         onClick={() => handleDecreaseLike()}
                     >
                         -
-                    </button>
+                    </StyledButtonSmall>
                 )}
-            </>
+        </StyledLikeWrapper>
         );
     };    
 

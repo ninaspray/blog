@@ -1,23 +1,16 @@
 import React from 'react';
-import Styled from 'styled-components';
 
-import { PageContainer,
+
+import { 
 StyledNav,
-NavLink,
-ColourPalette, } from '../styles/GlobalStyles';
-
-const StyledNavWrap = Styled.nav`
-height: 4 rem;
-display: flex;
-align-items: center;
-background-color: ${ColourPalette.Pink};
-`;
+StyledNavWrap,
+NavLink, } from '../styles/GlobalStyles';
 
 
 const Navigation = () => {
     return (
         <StyledNavWrap>
-            <PageContainer>
+            
             <StyledNav>
                 <li>
                     <NavLink to="/">Home  </NavLink>
@@ -29,7 +22,6 @@ const Navigation = () => {
                     <NavLink to="/contact">Contact  </NavLink>
                 </li>
             </StyledNav>
-            </PageContainer>
         </StyledNavWrap>
     );
 };

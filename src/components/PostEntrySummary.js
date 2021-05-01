@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 
 // types
 import { PostType } from '../types/post.type';
@@ -10,10 +10,10 @@ import LikeCounter from './like-counter';
 
 
 //styles
-import { PlainLink } from '../styles/GlobalStyles';
+import { PlainLink, StyledArticle } from '../styles/GlobalStyles';
 
 
-const PostEntrySummary = ({ post, user, children, theme }) => {
+const PostEntrySummary = ({ post, user, theme, children }) => {
     const { title, body } = post;
     const { name } = user;
 
@@ -28,7 +28,7 @@ const PostEntrySummary = ({ post, user, children, theme }) => {
     };
 
     return (
-        <article>
+        <StyledArticle>
             <h2>
             <PlainLink theme={theme} to={`post/${post.id}`}>
                 {title}
@@ -44,14 +44,14 @@ const PostEntrySummary = ({ post, user, children, theme }) => {
                 />
                 {children || ''}
             </div>
-        </article>
+        </StyledArticle>
     );
 };
 
 PostEntrySummary.propTypes = {
     post: PostType.isRequired,
     user: UserType.isRequired,
-    theme: string.isRequired,
+    theme: PropTypes.string.isRequired,
     children: PropTypes.node,
 };
 
