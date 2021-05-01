@@ -15,3 +15,26 @@ export const PageContainer = Styled.div`
     padding-right: 12px;
     box-sizing: border-box;
 `;
+
+export const StyledHeader = Styled.header`
+    font-size: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    .header_title {
+        margin-bottom: 20px;
+    }
+    .header_button-wrap {
+        display: flex;
+        flex-grow: 1
+    }
+
+`;
+
+export const StyleButton = Styled.button`
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    `;
