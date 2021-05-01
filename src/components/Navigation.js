@@ -4,18 +4,43 @@ import Styled from 'styled-components';
 
 import { PageContainer } from '../styles/GlobalStyles';
 
-const StyledNav = Styled.nav`
-height: 48px;
+const StyledNavWrap = Styled.nav`
+height: 4 rem;
 display: flex;
 align-items: center;
-margin: 0px;
+background-color: #A8577E;
+`;
+
+const StyledNav = Styled.ul`
+list-style: none;
+display: inline-flex;
+li:not(:last-of-type){
+    margin-right: 3rem;
+}
+a {
+    position: relative;
+    font-size: 2rem;
+    color: #F5D7E3;
+
+
+    &::after{
+        content: '';
+        display: block;
+        background-color: #F5D7E3;
+        width: 0%;
+        transition: width 0.5s;
+    }
+    &:hover::after {
+        width: 100%;
+    }
+}
 `;
 
 const Navigation = () => {
     return (
-        <StyledNav>
+        <StyledNavWrap>
             <PageContainer>
-            <ul>
+            <StyledNav>
                 <li>
                     <Link to="/">Home  </Link>
                     <></>
@@ -25,9 +50,9 @@ const Navigation = () => {
                     <></>
                     <Link to="/contact">Contact  </Link>
                 </li>
-            </ul>
+            </StyledNav>
             </PageContainer>
-        </StyledNav>
+        </StyledNavWrap>
     );
 };
 export default Navigation;
