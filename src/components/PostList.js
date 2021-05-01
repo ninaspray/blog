@@ -10,17 +10,21 @@ import { UserType } from '../types/user.type';
 // components
 import PostEntrySummary from './PostEntrySummary';
 
+
+//styles
+import {PageContainer} from '../styles/GlobalStyles';
+
 const PostList = ({ posts, users, removePost }) => {
     return (posts || []).map(post => {
         const user = users.find(({ id }) => id === post.userId);
         return (
-            <div key={post.id}>
+            <PageContainer key={post.id}>
                 <PostEntrySummary post={post} user={user}>
                     <button type="button" onClick={() => removePost(post.id)}>
                         remove
                     </button>
                 </PostEntrySummary>
-            </div>
+            </PageContainer>
         );
     });
 };

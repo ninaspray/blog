@@ -17,6 +17,9 @@ import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
 //Custom Hook
 import { useFetch } from './hooks/useFetch';
 
+//stlye
+import { PageWrapper } from './styles/GlobalStyles';
+
 // consts
 const API = process.env.REACT_APP_JSON_PLACEHOLDER_API
 
@@ -33,6 +36,7 @@ const App = () => {
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>
+            <PageWrapper>
             <Router>
                 <Navigation />
                 <Switch>
@@ -62,6 +66,7 @@ const App = () => {
                     </Route>
                 </Switch>
             </Router>
+            </PageWrapper>
         </ThemeContext.Provider>
     );
 };

@@ -1,9 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Styled from 'styled-components';
+
+import { PageContainer } from '../styles/GlobalStyles';
+
+const StyledNav = Styled.nav`
+height: 48px;
+display: flex;
+align-items: center;
+margin: 0px;
+`;
 
 const Navigation = () => {
     return (
-        <nav>
+        <StyledNav>
+            <PageContainer>
             <ul>
                 <li>
                     <Link to="/">Home  </Link>
@@ -15,7 +26,8 @@ const Navigation = () => {
                     <Link to="/contact">Contact  </Link>
                 </li>
             </ul>
-        </nav>
+            </PageContainer>
+        </StyledNav>
     );
 };
 export default Navigation;
