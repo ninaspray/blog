@@ -13,4 +13,5 @@ export const PageContainer = Styled.div`
     margin-right: auto;
     padding-left: 12px;
     padding-right: 12px;
+    box-sizing: border-box;
 `;
