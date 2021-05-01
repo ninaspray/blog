@@ -33,8 +33,8 @@ const PostEntrySummary = ({ post, user, children }) => {
             <div>
                 <LikeCounter
                     likeCounter={likeCounter}
-                    handleIncreaseCounter={increaseCounter}
-                    handleDecreaseCounter={decreaseCounter}
+                    handleIncreaseLike={increaseCounter}
+                    handleDecreaseLike={decreaseCounter}
                 />
                 {children || ''}
             </div>

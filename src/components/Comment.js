@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { CommentType } from '../types/comment.type';
 
 const Comment = ({ comment }) => {
@@ -62,7 +62,13 @@ const Comment = ({ comment }) => {
 };
 
 Comment.propTypes = {
-    comment: CommentType.isRequired, 
+    comment: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        body: PropTypes.string,
+        email: PropTypes.string,
+        identityConsent: PropTypes.bool,
+    }).isRequired,
 };
 
 export default Comment;
