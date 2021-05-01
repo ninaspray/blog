@@ -62,13 +62,7 @@ const Comment = ({ comment }) => {
 };
 
 Comment.propTypes = {
-    comment: PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-        body: PropTypes.string,
-        email: PropTypes.string,
-        identityConsent: PropTypes.bool,
-    }).isRequired,
+    comment: CommentType.isRequired, 
 };
 
 export default Comment;
