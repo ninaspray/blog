@@ -22,7 +22,7 @@ const Header = () => {
                 <StyleButton type="button" onClick={() => setTheme('light')}>
                     light
                 </StyleButton>
-                <StyleButton type="button" onClick={() => setTheme('dark')}>
+                <StyleButton primary type="button" onClick={() => setTheme('dark')}>
                     dark
                 </StyleButton>
             </div>

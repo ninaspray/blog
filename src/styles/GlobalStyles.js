@@ -1,5 +1,13 @@
-import Styled from 'styled-components';
+import Styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+
+export const ColourPalette = {
+Pink: '#C884A6',
+Gold: '#D5A021',
+Green: '#0B7A75',
+Mint: '#BAF2D8',
+};
+
 
 export const PageWrapper = Styled.div`
 
@@ -38,7 +46,12 @@ export const StyleButton = Styled.button`
     padding: 10px 20px;
     font-size: 1rem;
     font-weight: 700;
-    `;
+    ${props =>
+        props.primary &&
+        css`
+            background: ${ColourPalette.Gold};
+        `};
+`;
 
 export const StyledNav = Styled.ul`
     list-style: none;
@@ -46,19 +59,18 @@ export const StyledNav = Styled.ul`
     li:not(:last-of-type){
         margin-right: 3rem;
     }
-}
 `;
 
 export const NavLink = Styled(Link)`
 position: relative;
         font-size: 2rem;
-        color: #F5D7E3;
+        color: ${ColourPalette.Mint};
     
     
         &::after{
             content: '';
             display: block;
-            background-color: #F5D7E3;
+            background-color: ${ColourPalette.Mint};
             width: 0%;
             transition: width 0.5s;
         }

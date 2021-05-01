@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Styled from 'styled-components';
 
 import { PageContainer,
 StyledNav,
-NavLink } from '../styles/GlobalStyles';
+NavLink,
+ColourPalette, } from '../styles/GlobalStyles';
 
 const StyledNavWrap = Styled.nav`
 height: 4 rem;
 display: flex;
 align-items: center;
-background-color: #A8577E;
+background-color: ${ColourPalette.Pink};
 `;
 
 

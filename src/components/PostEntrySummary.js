@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import PropTypes, { string } from 'prop-types';
 
 // types
 import { PostType } from '../types/post.type';
@@ -9,7 +8,12 @@ import { UserType } from '../types/user.type';
 // components
 import LikeCounter from './like-counter';
 
-const PostEntrySummary = ({ post, user, children }) => {
+
+//styles
+import { PlainLink } from '../styles/GlobalStyles';
+
+
+const PostEntrySummary = ({ post, user, children, theme }) => {
     const { title, body } = post;
     const { name } = user;
 
@@ -26,7 +30,9 @@ const PostEntrySummary = ({ post, user, children }) => {
     return (
         <article>
             <h2>
-                <Link to={`post/${post.id}`}>{title}</Link>
+            <PlainLink theme={theme} to={`post/${post.id}`}>
+                {title}
+            </PlainLink>
             </h2>
             <h3>by {name}</h3>
             <p>{body}</p>
@@ -45,6 +51,7 @@ const PostEntrySummary = ({ post, user, children }) => {
 PostEntrySummary.propTypes = {
     post: PostType.isRequired,
     user: UserType.isRequired,
+    theme: string.isRequired,
     children: PropTypes.node,
 };
 
