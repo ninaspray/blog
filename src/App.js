@@ -14,6 +14,7 @@ import Create from './components/Create';
 import PostEntry from './components/PostEntry';
 import NotFound from './components/NotFound';
 import Signup from './components/Signup';
+import PrivateRoute from './components/PrivateRoute';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
@@ -67,9 +68,9 @@ const App = () => {
                         </PageContainer>
                     </div>
                 </Route>
-                <Route path="/create">
+                <PrivateRoute path="/create">
                     <Create addPost={addPost} />
-                </Route>
+                </PrivateRoute> 
                 <Route path="/about" component={About}/>
                 <Route path="/contact" component={Contact}/>
                 <Route path="/post/:id" component={PostEntry}/>
