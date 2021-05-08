@@ -2,11 +2,12 @@ import Styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const ColourPalette = {
-Pink: '#C884A6',
-Gold: '#D5A021',
-Green: '#0B7A75',
-Mint: '#BAF2D8',
-Blossom: '#FFB7C3',
+DarkGreen: '#026670',
+MintGreen: '#9FEDD7',
+Lemon: '#FEF9C7',
+Yellow: '#FCE181',
+Mauve: '#EDEAE5',
+Blue: '#77A6F7',
 };
 
 
@@ -27,7 +28,7 @@ export const PageContainer = Styled.div`
 
 export const StyledHeader = Styled.header`
     font-size: 28px;
-    color: ${ColourPalette.Gold};
+    color: ${ColourPalette.Blue};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,16 +44,17 @@ export const StyledHeader = Styled.header`
 `;
 
 export const StyledLikeWrapper = Styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-left: 20px;
-    .like-wrapper__counter {
-        margin-right: 20px;
-    }
-    .like-wrapper__button {
-        margin-right: 20px;
-    }
+display: flex;
+align-items: center;
+justify-contetn: space-evenly;
+margin-bottom: 20px;
+padding-left: 20px;
+.like-wrapper__counter {
+    margin-right: 20px;
+}
+.like-wrapper__button {
+    margin-right: 20px;
+}
 `;
 
 export const StyleButton = Styled.button`
@@ -62,12 +64,12 @@ export const StyleButton = Styled.button`
     ${props =>
         props.primary &&
         css`
-            background: ${ColourPalette.Pink};
+            background: ${ColourPalette.Mauve};
         `};
     ${props =>
         props.secondary &&
         css`
-            background: ${ColourPalette.Gold};
+            background: ${ColourPalette.MintGreen};
         `};
 `;
 
@@ -80,51 +82,51 @@ export const StyledButtonSmall = Styled.button`
 export const StyledNavWrap = Styled.nav`
     height: 4rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    
+    background-color: ${ColourPalette.MintGreen};
 `;
 
 export const StyledNav = Styled.ul`
-    list-style: none;
-    display: inline-flex;
-    li:not(:last-of-type){
-        margin-right: 3rem;
+list-style: none;
+display: flex;
+li:not(:last-of-type){
+    margin-right: 3rem;
+}
+a {
+    font-size: 2rem;
+    color: ${ColourPalette.DarkGreen};
+    position: relative;
+    &::after {
+        content: '';
+        display: block;
+        background-color: ${ColourPalette.Yellow};
+        width: 0%;
+        height: 2px;
+        transition: width 0.5s;
     }
-    a {
-        font-size: 2rem;
-        color: ${ColourPalette.Mint};
-        position: relative;
-        &::after {
-            content: '';
-            display: block;
-            background-color: ${ColourPalette.Mint};
-            width: 0%;
-            height: 2px;
-            transition: width 0.5s;
-        }
-        &:hover::after {
-            width: 100%;
-        }
+    &:hover::after {
+        width: 100%;
     }
+}
 `;
 
 export const NavLink = Styled(Link)`
-font-size: 1.6rem;
-    color: ${ColourPalette.Mint};
-    position: relative;
-    &::after{
-     content: '';
+font-size: 2rem;
+color: ${ColourPalette.white};
+position: relative;
+&::after {
+    content: '';
     display: block;
-     background-color: ${ColourPalette.Mint};
+    background-color: ${ColourPalette.white};
     width: 0%;
+    height: 2px;
     transition: width 0.5s;
-        }
-        &:hover::after {
-            width: 100%;
-        }
+}
+&:hover::after {
+    width: 100%;
+}
 `;
-
 export const PlainLink = Styled(Link)`
  color: ${props => props.theme};
 `;
@@ -139,9 +141,15 @@ export const PostListWrapper = Styled.div`
         margin-bottom: 32px;
     }
     .post-entry:nth-child(even) {
-        border: 2px solid ${ColourPalette.green};
+        border: 2px solid ${ColourPalette.Lemon};
     }
     .post-entry:nth-child(odd) {
-        border: 2px solid ${ColourPalette.blue};
+        border: 2px solid ${ColourPalette.MintGreen};
     }
-`
+`;
+
+export const StyledInput = Styled.input`
+    padding: 5px;
+    border: 1px solid grey;
+    margin: 5px;
+`;

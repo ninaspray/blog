@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, 
+    Redirect, 
+    Route, 
+    Switch} from 'react-router-dom';
 
 // components
 import PostList from './components/PostList';
@@ -8,11 +11,13 @@ import Navigation from './components/Navigation';
 import About from './components/About';
 import Contact from './components/Contact';
 import Create from './components/Create';
-import PostEntrySummary from './components/PostEntrySummary';
+import PostEntry from './components/PostEntry';
 import NotFound from './components/NotFound';
+import Signup from './components/Signup';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 //Custom Hook
 import { useFetch } from './hooks/useFetch';
@@ -37,7 +42,8 @@ const App = () => {
     }, [posts]);
 
     return (
-        <PageWrapper>
+    <PageWrapper>
+       <AuthProvider>
         <ThemeContext.Provider value={{ theme, setTheme }}>
             <Router>
                 <Navigation />
@@ -52,6 +58,7 @@ const App = () => {
                                     posts={posts}
                                     users={users}
                                     removePost={removePost}
+                                    theme={theme}
                                 />
                             ) : (
                                 <div>Loading...</div>
@@ -65,7 +72,8 @@ const App = () => {
                 </Route>
                 <Route path="/about" component={About}/>
                 <Route path="/contact" component={Contact}/>
-                <Route path="/post/id" component={PostEntrySummary}/>
+                <Route path="/post/:id" component={PostEntry}/>
+                <Route path="/signup" component={Signup} />
                 <Route exact path="/404" component={NotFound} />
                     <Route>
                         <Redirect to="/404" />
@@ -73,6 +81,7 @@ const App = () => {
                 </Switch>
             </Router>
         </ThemeContext.Provider>
+        </AuthProvider>
         </PageWrapper>
     );
 };
