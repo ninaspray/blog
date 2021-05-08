@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 
@@ -9,7 +10,14 @@ NavLink, } from '../styles/GlobalStyles';
 
 
 const Navigation = () => {
-    const { currentUser } = useAuth();
+    const { currentUser, logout } = useAuth();
+    const history = useHistory();
+
+    const handleLogout = async event => {
+        event.preventDefault();
+        await logout();
+        history.push('/');
+    };
     return (
         <StyledNavWrap>
             <StyledNav>
@@ -21,18 +29,31 @@ const Navigation = () => {
                           <NavLink to="/">Home</NavLink>
                     </li>
                   )}
+                  <li>
                     <NavLink to="/about">About  </NavLink>
-                    <></>
+                </li>
+                <li>
                     <NavLink to="/contact">Contact  </NavLink>
                 </li>
-                </StyledNav>
+                </li>
                 {!currentUser && (
-                <StyledNav>
+                                <>
+                                <li>
+                                    <NavLink to="/signup">Sign Up</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/login">Log In</NavLink>
+                                </li>
+                            </>
+                )}
+                {currentUser && (
                     <li>
-                        <NavLink to="/signup">Signup</NavLink>
+                        <NavLink to="/" onClick={handleLogout}>
+                            Log out
+                        </NavLink>
                     </li>
-                </StyledNav>
-            )}
+                )}
+            </StyledNav>
         </StyledNavWrap>
     );
 };

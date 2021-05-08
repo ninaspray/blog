@@ -27,7 +27,7 @@ export const PageContainer = Styled.div`
 `;
 
 export const StyledHeader = Styled.header`
-    font-size: 28px;
+    font-size: 20px;
     color: ${ColourPalette.Blue};
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@ export const StyledHeader = Styled.header`
 export const StyledLikeWrapper = Styled.div`
 display: flex;
 align-items: center;
-justify-contetn: space-evenly;
+justify-content: space-evenly;
 margin-bottom: 20px;
 padding-left: 20px;
 .like-wrapper__counter {
@@ -80,23 +80,23 @@ export const StyledButtonSmall = Styled.button`
 `;
 
 export const StyledNavWrap = Styled.nav`
-    height: 4rem;
+    background-color: ${ColourPalette.MintGreen};
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: ${ColourPalette.MintGreen};
 `;
 
 export const StyledNav = Styled.ul`
 list-style: none;
-display: flex;
+display: inline-flex;
+flex-direction: row;
 li:not(:last-of-type){
     margin-right: 3rem;
-}
 a {
     font-size: 2rem;
     color: ${ColourPalette.DarkGreen};
     position: relative;
+
     &::after {
         content: '';
         display: block;
