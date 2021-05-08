@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { StyledInput } from '../styles/GlobalStyles';
 import { useAuth } from '../contexts/AuthContext';
@@ -76,6 +76,9 @@ const Login = () => {
                     Sign in with Google
                 </button>
             </form>
+            <div>
+                Need an account? <Link to="/signup">Sign Up</Link>
+            </div>
         </>
     );
 };

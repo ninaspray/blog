@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 //custom Hooks
 import {useForm} from '../hooks/useForm';
@@ -73,6 +73,9 @@ return (
     <button type="submit" disabled={loading}>
         Sign Up
     </button>
+    <div>
+    Already have an account? <Link to="/login">Log in</Link>
+    </div>
 </form>
 </>
 );

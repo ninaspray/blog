@@ -2,12 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-
-import { 
-StyledNav,
-StyledNavWrap,
-NavLink, } from '../styles/GlobalStyles';
-
+import { StyledNavWrap, StyledNav, NavLink } from '../styles/GlobalStyles';
 
 const Navigation = () => {
     const { currentUser, logout } = useAuth();
@@ -18,33 +13,35 @@ const Navigation = () => {
         await logout();
         history.push('/');
     };
+
     return (
         <StyledNavWrap>
             <StyledNav>
                 <li>
-                    <NavLink to="/">Home  </NavLink>
-                    <></>
-                  {currentUser && (
-                      <li>
-                          <NavLink to="/">Home</NavLink>
+                    <NavLink to="/">Home</NavLink>
+                </li>
+                {currentUser && (
+                    <li>
+                        <NavLink to="/create">Create</NavLink>
                     </li>
-                  )}
-                  <li>
-                    <NavLink to="/about">About  </NavLink>
+                )}
+                <li>
+                    <NavLink to="/about">About</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/contact">Contact  </NavLink>
+                    <NavLink to="/contact">Contact</NavLink>
                 </li>
-                </li>
+            </StyledNav>
+            <StyledNav>
                 {!currentUser && (
-                                <>
-                                <li>
-                                    <NavLink to="/signup">Sign Up</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/login">Log In</NavLink>
-                                </li>
-                            </>
+                    <>
+                        <li>
+                            <NavLink to="/signup">Sign up</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/login">Log In</NavLink>
+                        </li>
+                    </>
                 )}
                 {currentUser && (
                     <li>
